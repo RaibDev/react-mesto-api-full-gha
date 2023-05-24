@@ -1,0 +1,36 @@
+.profile__avatar {
+  background-image: url(../../../images/avatar.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  margin-right: 30px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+
+.profile__avatar:hover::after {
+  background-image: url(../../../images/icon/edit.svg);
+  background-color: rgba(0, 0, 0, 0.8);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 26px;
+  border-radius: 50%;
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+}
+
+@media screen and (max-width: 652px) {
+  .profile__avatar {
+    margin-bottom: 26px;
+    margin-right: 0;
+  }
+}

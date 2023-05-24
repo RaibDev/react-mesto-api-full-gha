@@ -1,0 +1,10 @@
+.auth {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 358px;
+  position: relative;
+  margin: auto;
+  font-family: 'Inter';
+  font-style: normal;
+}

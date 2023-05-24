@@ -1,0 +1,14 @@
+.profile__info {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  gap: 18px 16px;
+  grid-template-areas: "name edit"
+                       "profession .";
+}
+
+@media screen and (max-width: 652px) {
+  .profile__info {
+    gap: 14px;
+    justify-content: center;
+  }
+}

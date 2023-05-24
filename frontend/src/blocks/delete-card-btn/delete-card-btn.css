@@ -1,0 +1,17 @@
+.delete-card-btn {
+  all: unset;
+  background-image: url(../../images/icon/wastebasket.svg);
+  background-size: cover;
+  width: 18px;
+  height: 19px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  transition: opacity .5s;
+  display: none;
+}
+
+.delete-card-btn:hover {
+  opacity: .6;
+}

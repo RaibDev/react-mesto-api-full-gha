@@ -1,0 +1,16 @@
+.profile {
+  color: #fff;
+  padding: 36.25px 0 47.25px;
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+  align-items: center;
+}
+
+@media screen and (max-width: 652px) {
+  .profile {
+    display: flex;
+    flex-direction: column;
+    padding-top: 42px;
+    padding-bottom: 36px;
+  }
+}

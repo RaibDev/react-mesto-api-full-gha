@@ -1,0 +1,7 @@
+.popup-tooltip {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  padding: 26px 0 24px ;
+}
