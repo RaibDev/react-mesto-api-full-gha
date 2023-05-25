@@ -40,7 +40,7 @@ function App() {
   const navigate = useNavigate();
 
   const api = new Api({
-    url: 'api.project.dubowitskiy.nomoredomains.rocks',
+    url: 'https://api.project.dubowitskiy.nomoredomains.rocks',
     headers: {
     authorization: `${localStorage.getItem('jwt')}`, 
     'Content-Type': 'application/json'
