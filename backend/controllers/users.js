@@ -44,14 +44,10 @@ const getMyInfo = (req, res, next) => {
 const login = (req, res, next) => {
   const { email, password } = req.body;
 
-  if (!email || !password) { // Проверка наличия полей
-    throw new customErrors.BadRequest('Не передан пароль или email');
-  }
-
   User.findOne({ email }).select('+password') // Ищем пользователя в базе
     .then((user) => {
       if (!user) {
-        return next(new customErrors.Unautorized('Неверные логин или пароль'));
+        return next(new customErrors.NotFound('Пользователь по указанному email не найден'));
       }
       return bcrypt.compare(password, user.password) // Сверяем переданный пароль и хеш пароля
         .then((matched) => {
@@ -111,7 +107,7 @@ const updateUser = (req, res, next) => { // Обновление полей по
   )
     .then((user) => {
       if (!user) {
-        next(new customErrors.BadRequest('Пользователь не найден'));
+        next(new customErrors.NotFound('Пользователь не найден'));
       } else {
         res.send({ data: user });
       }
@@ -137,7 +133,7 @@ const updateAvatar = (req, res, next) => { // Обновление аватар�
   )
     .then((newData) => {
       if (!newData) {
-        next(new customErrors.BadRequest('Пользователь не найден'));
+        next(new customErrors.NotFound('Пользователь не найден'));
       } else {
         res.send({ data: newData });
       }

@@ -12,7 +12,7 @@ const getCards = (req, res, next) => { // Получение карточек
 const createCard = (req, res, next) => { // Создаем карточку
   const { name, link } = req.body;
   Card.create({ name, link, owner: req.user._id })
-    .then((card) => res.send({ data: card }))
+    .then((card) => res.status(201).send({ data: card }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequest('Переданы некорректные данные'));
@@ -28,15 +28,13 @@ const deleteCard = (req, res, next) => { // Удаляем карточку
   Card.findById(cardId)
     .then((cardData) => {
       if (!cardData) {
-        next(new NotFound('Карточка с таким id не найдена'));
-      } else {
-        const ownerId = cardData.owner.toString();
-        if (userId !== ownerId) {
-          next(new Forbidden('Удалить карточку может только создавший её пользователь'));
-          return;
-        }
-        Card.deleteOne(cardData).then(() => res.status(200).send({ message: 'Карточка удалена' }));
+        return next(new NotFound('Карточка с таким id не найдена'));
       }
+      const ownerId = cardData.owner.toString();
+      if (userId !== ownerId) {
+        return next(new Forbidden('Удалить карточку может только создавший её пользователь'));
+      }
+      return Card.deleteOne(cardData).then(() => res.status(200).send({ message: 'Карточка удалена' }));
     })
     .catch((err) => {
       if (err.name === 'CastError') {

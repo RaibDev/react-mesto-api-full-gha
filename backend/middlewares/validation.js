@@ -39,26 +39,29 @@ const loginValidation = {
 
 const getUserValidation = {
   params: Joi.object().keys({
-    userId: Joi.string().hex().length(24).message('Передан некорректный id пользователя'),
+    userId: Joi.string().required().hex().length(24)
+      .message('Передан некорректный id пользователя'),
   }),
 };
 
 const updateUserValidation = {
   body: Joi.object().keys({
-    name: Joi.string().min(2).max(30).messages({
-      'string.min': 'Поле "имя" должно содержать более 2х символов',
-      'string.max': 'Поле "имя" не должно содержать более 30 знаков',
-    }),
-    about: Joi.string().min(2).max(30).messages({
-      'string.min': 'Поле "сфера занятий" должно содержать более 2х символов',
-      'string.max': 'Поле "сфера занятий" не должно содержать более 30 знаков',
-    }),
+    name: Joi.string().required().min(2).max(30)
+      .messages({
+        'string.min': 'Поле "имя" должно содержать более 2х символов',
+        'string.max': 'Поле "имя" не должно содержать более 30 знаков',
+      }),
+    about: Joi.string().required().min(2).max(30)
+      .messages({
+        'string.min': 'Поле "сфера занятий" должно содержать более 2х символов',
+        'string.max': 'Поле "сфера занятий" не должно содержать более 30 знаков',
+      }),
   }),
 };
 
 const updateAvatarValidation = {
   body: Joi.object().keys({
-    avatar: Joi.string().pattern(regexUrl).message('Ссылка на аватар введёна некорректно'),
+    avatar: Joi.string().required().pattern(regexUrl).message('Ссылка на аватар введёна некорректно'),
   }),
 };
 
@@ -82,13 +85,15 @@ const createCardValidation = {
 
 const deleteCardValidation = {
   params: Joi.object().keys({
-    cardId: Joi.string().hex().length(24).message('Передан некорректный id карточки'),
+    cardId: Joi.string().required().hex().length(24)
+      .message('Передан некорректный id карточки'),
   }),
 };
 
 const likeCardValidation = {
   params: Joi.object().keys({
-    cardId: Joi.string().hex().length(24).message('Передан некорректный id карточки'),
+    cardId: Joi.string().required().hex().length(24)
+      .message('Передан некорректный id карточки'),
   }),
 };
 

@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
-const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const router = require('./routes');
@@ -17,7 +16,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
 
 });
 
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.use(requestLogger); // Логируем запросы
 app.use(cors()); // Разрешаем кросс-доменные запросы
