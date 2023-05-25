@@ -42,10 +42,14 @@ function App() {
   const api = new Api({
     url: 'https://api.project.dubowitskiy.nomoredomains.rocks',
     headers: {
-    authorization: `${localStorage.getItem('jwt')}`, 
+    authorization: `Bearer ${localStorage.getItem('jwt')}`, 
     'Content-Type': 'application/json'
     },
   });
+
+  useEffect(() => {
+    checkToken()
+  },[])
 
   useEffect(() => {
     loggedIn && Promise.all([api.getUserInfo(), api.getInitialCards()])
@@ -55,10 +59,6 @@ function App() {
     })
     .catch((err) => { console.log(err) })
   }, [loggedIn])
-
-  useEffect(() => {
-    checkToken()
-  },[])
 
   function handleRegister(formValue) {
     if(!formValue.email || !formValue.password) {
