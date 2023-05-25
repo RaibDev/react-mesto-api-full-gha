@@ -8,7 +8,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.10.115
+IP-адрес 51.250.111.111
 
 Frontend https://project.dubowitskiy.nomoredomains.monster
 
