@@ -54,8 +54,9 @@ function App() {
   useEffect(() => {
     loggedIn && Promise.all([api.getUserInfo(), api.getInitialCards()])
     .then(([user, card]) => {
-      setCurrentUser(user);
-      setCards(card);
+      console.log('user ===>', user);
+      setCurrentUser(user.user);
+      setCards(card.data);
     })
     .catch((err) => { console.log(err) })
   }, [loggedIn])
@@ -156,7 +157,8 @@ function App() {
   function handleUpdateUser(userData) {
     api.changeUserInfo(userData)
     .then(() => {
-      setCurrentUser({ ...currentUser, name: userData.name, about: userData.about });
+      console.log('userData ===>', userData);
+      setCurrentUser({ ...currentUser, name: userData.user.name, about: userData.user.about });
       closeAllPopups();
     })
     .catch(err => console.log(err))
@@ -165,7 +167,7 @@ function App() {
   function handleUpdateAvatar(avatarData) {
     api.changeUserAvatar(avatarData)
     .then((user) => {
-      setCurrentUser(user);
+      setCurrentUser(user.user);
       closeAllPopups();
     })
     .catch(err => console.log(err))
