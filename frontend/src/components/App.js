@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';  
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
                                                     
-import api  from '../utils/api.js';
+import Api  from '../utils/api.js';
 import auth from '../utils/auth.js'
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 
@@ -38,6 +38,14 @@ function App() {
   });
 
   const navigate = useNavigate();
+
+  const api = new Api({
+    url: 'api.project.dubowitskiy.nomoredomains.rocks',
+    headers: {
+    authorization: `${localStorage.getItem('jwt')}`, 
+    'Content-Type': 'application/json'
+    },
+  });
 
   useEffect(() => {
     loggedIn && Promise.all([api.getUserInfo(), api.getInitialCards()])

@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const router = require('./routes');
 const errorHandler = require('./middlewares/errorHandler');
 const { errorLogger, requestLogger } = require('./middlewares/logger');
+const cors = require('./middlewares/cors');
 
 const { PORT = 3000 } = process.env;
 
@@ -18,6 +19,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
 app.use(bodyParser.json());
 
 app.use(requestLogger); // Логируем запросы
+app.use(cors); // Разрешаем кросс-доменные запросы
 
 app.get('/crash-test', () => { // Для ревьюеров
   setTimeout(() => {

@@ -106,17 +106,6 @@ class Api {
       .then(response => this._checkPromise(response));
   }
 
-}
+};
 
-const api = new Api({
-  url: 'https://mesto.nomoreparties.co/v1/cohort-58',
-  headers: {
-  authorization: '224c0bf1-3fa1-420b-9667-0b1a7afec2fe',
-  'Content-Type': 'application/json'
-  },
-})
-
-export default api;
-
-//   https://mesto.nomoreparties.co/v1/cohort-58/
-// 224c0bf1-3fa1-420b-9667-0b1a7afec2fe
+export default Api;
