@@ -12,4 +12,4 @@ IP-адрес 158.160.10.115
 
 Frontend https://project.dubowitskiy.nomoredomains.monster
 
-Backend https://...
+Backend https://api.project.dubowitskiy.nomoredomains.rocks
