@@ -8,8 +8,8 @@
 
 ## Ссылки на проект
 
-IP-адрес 51.250.111.111
+IP-адрес
 
-Frontend https://project.dubowitskiy.nomoredomains.monster
+Frontend https://
 
-Backend https://api.project.dubowitskiy.nomoredomains.rocks
+Backend https://
